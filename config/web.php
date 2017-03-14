@@ -49,7 +49,7 @@ $config = [
             'rules' => array(
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['api/user', 'api/session', 'api/word'],
+                    'controller' => ['api/user', 'api/session', 'api/word', 'api/answer'],
                     'pluralize' => false,
                 ],
                 [

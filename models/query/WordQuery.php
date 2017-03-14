@@ -10,12 +10,7 @@ use app\models\Word;
 class WordQuery extends \yii\db\ActiveQuery {
 
     public function notUsable(Session $session) {
-        $usable = Answer::find()->select('source_word_id')->bySession($session)->asArray()->all();
-
-        return $this;
-
-        $table = Answer::tableName();
-        return $this->join('OUTER JOIN', $table, $table.'.source_word_id = '.Word::tableName().'.word_id')->andWhere([$table.'.session_id' => $session->session_id]);
+        return $this->andWhere('word_id not in (select source_word_id from answer where session_id = :session_id)', [':session_id' => $session->session_id]);
     }
 
     public function exceptWord(Word $word) {

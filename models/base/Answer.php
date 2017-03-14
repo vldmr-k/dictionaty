@@ -32,8 +32,8 @@ class Answer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['session_id', 'source_word_id', 'source_lang_id', 'selectable_word_id', 'selectable_lang_id', 'point', 'result'], 'required'],
-            [['session_id', 'source_word_id', 'source_lang_id', 'selectable_word_id', 'selectable_lang_id', 'point', 'result'], 'integer'],
+            [['session_id', 'source_word_id', 'selected_word_id'], 'required'],
+            [['session_id', 'source_word_id', 'selected_word_id', 'point', 'result'], 'integer'],
         ];
     }
 
@@ -46,9 +46,7 @@ class Answer extends \yii\db\ActiveRecord
             'answer_id' => 'Answer ID',
             'session_id' => 'Session ID',
             'source_word_id' => 'Source Word ID',
-            'source_lang_id' => 'Source Lang ID',
-            'selectable_word_id' => 'Selectable Word ID',
-            'selectable_lang_id' => 'Selectable Lang ID',
+            'selected_word_id' => 'Selectable Word ID',
             'point' => 'Point',
             'result' => 'Result',
         ];

@@ -16,20 +16,23 @@ class Word extends \app\models\base\Word {
         return $this->hasOne(self::className(), ['word_id' => 'translate_word_id'])->viaTable('dictionary', ['source_word_id' => 'word_id']);
     }
 
+    public function isTranslateCorrect(Word $word) {
+        return $this->translate->word_id == $word->word_id;
+    }
+
     public function getLanguage() {
         return $this->hasOne(Language::className(), ['language_id' => 'language_id']);
     }
 
     public function getVariants($limit = 4) {
 
-        if($limit <= 1) {
-            $limit = 4; //set default
-        }
+        $limit = $limit <= 1 ? 1 : $limit-1;
+
 
         $translate = $this->translate;
         $variants = self::find()
             ->exceptWord($translate)
-            ->exceptLanguage($translate->language)
+            ->exceptLanguage($this->language)
             ->limit($limit)->all();
 
         array_push($variants, $translate);
