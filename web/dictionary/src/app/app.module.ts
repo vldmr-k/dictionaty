@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -16,10 +16,14 @@ import { AuthGuard } from "./_guards/index";
 import { TestComponent } from './test/test.component';
 import { VariantItemComponent } from "./test/variant-item.component";
 import { AlertComponent } from "./_directives/index";
+import { Subject } from 'rxjs/Subject';
+
 
 function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions, authService: AuthService) {
     return  new HttpService(backend, defaultOptions, authService);
 }
+
+
 @NgModule({
     imports: [
         BrowserModule,

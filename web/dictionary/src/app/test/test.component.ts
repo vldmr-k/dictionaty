@@ -52,14 +52,14 @@ export class TestComponent implements OnInit {
     constructor(private testService: TestService, private answerService: AnswerService, private activatedRoute: ActivatedRoute, private router : Router, private alertService: AlertService) { }
 
     ngOnInit() {
-
-        this.alertService.success("Перевод указан не верно!");
+        console.log('TestComponent init!');
 
         this.nextWord()
     }
 
     addAnswer():void {
 
+        this.alertService.success("Перевод указан не верно!");
 
 
         /*

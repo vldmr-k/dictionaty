@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertMessage } from "./_models/index";
-import { AlertService } from "./_services/alert.service";
+import { AlertService } from "./_services/index";
 
 @Component({
     selector: 'dictionary-root',
     template: `
-
         <div class="container">
           <div class="row banner"></div>
             <div class="row app-test">
@@ -15,18 +13,13 @@ import { AlertService } from "./_services/alert.service";
                     <router-outlet></router-outlet>
                 </div>
             </div>
-        </div>
-        
+        </div>        
   `
 })
 export class AppComponent implements OnInit {
-    
-    alertMessage: AlertMessage;
-
-    constructor(private alertService: AlertService){};
 
     ngOnInit() {
-        console.log("app init");
-
+        console.log('AppComponent init!');
     }
+
 }
